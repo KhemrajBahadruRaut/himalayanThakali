@@ -4,7 +4,7 @@ const VisitUs = () => {
   return (
     <div>
           {/* Visit Us Divider */}
-      <div className="flex items-center justify-center gap-4 py-8 px-8">
+      <div className="flex items-center justify-center gap-4 pt-18 py-10 px-8">
         <div className="h-px bg-linear-to-r from-transparent via-[#E9842C] to-transparent w-80" />
         <div className="flex items-center gap-2 text-[#D97634] text-sm tracking-widest">
           <span className="text-xl">
@@ -26,8 +26,8 @@ const VisitUs = () => {
       </div>
 
       {/* Contact Cards */}
-      <section className="px-8 py-20 max-w-7xl mx-auto">
-        <div className="grid grid-cols-3 gap-8">
+      <section className="px-8 pb-20 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Visit Us Card */}
           <motion.div
             className="bg-[#2A2A2A] p-12 text-center hover:bg-[#333333] transition-all duration-300 group relative overflow-hidden"

@@ -6,7 +6,7 @@ const ShortIntro = () => {
     <div>
       
       {/* Short Intro Divider */}
-      <div className="flex items-center justify-center gap-4 py-2 px-8">
+      <div className="flex items-center justify-center gap-4 pt-20 px-8">
         <div className="h-px  bg-linear-to-r from-transparent via-[#E9842C] to-transparent w-80" />
         <div className="flex items-center gap-2 text-[#E9842C] text-sm tracking-widest">
           <span className="text-xl">
@@ -29,7 +29,7 @@ const ShortIntro = () => {
       </div>
 
       {/* About Section */}
-      <section className="relative px-8 py-20 max-w-6xl mx-auto">
+      <section className="relative px-8 py-5  max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,15 +37,15 @@ const ShortIntro = () => {
           viewport={{ once: true }}
         >
           {/* Decorative corner brackets */}
-          <div className="relative border-l-4 border-[#D97634] pl-12 mb-8">
-            <div className="absolute top-0 left-0 w-32 h-32 border-t-4 border-l-4 border-[#D97634]" />
+          <div className="relative border-l-4 border-[#E9842C] pl-12 mb-8">
+            <div className="hidden sm:flex absolute top-0 left-0 w-32 h-32 border-t-4 border-l-4 border-[#E9842C]" />
           </div>
 
-          <h2 className="text-4xl font-bold text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl  font-bold text-center mb-12">
             About Himalayan Thakali
           </h2>
 
-          <p className="text-gray-300 text-center leading-relaxed max-w-4xl mx-auto text-lg">
+          <p className="text-gray-300 sm:px-8 lg:px-0 text-justify leading-relaxed max-w-4xl  mx-auto text-lg">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -55,8 +55,8 @@ const ShortIntro = () => {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
 
-          <div className="relative border-r-4 border-[#D97634] pr-12 mt-8 flex justify-end">
-            <div className="absolute bottom-0 right-0 w-32 h-32 border-b-4 border-r-4 border-[#D97634]" />
+          <div className="relative border-r-4 border-[#E9842C] pr-12 mt-8 flex justify-end">
+            <div className="hidden sm:flex absolute bottom-0 right-0 w-32 h-32 border-b-4 border-r-4 border-[#E9842C]" />
           </div>
         </motion.div>
       </section>

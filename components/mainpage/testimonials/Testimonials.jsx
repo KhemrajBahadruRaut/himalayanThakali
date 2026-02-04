@@ -50,7 +50,7 @@ const Testimonials = () => {
 
             {/* Testimonial Card */}
             <motion.div
-              className="border-2 border-[#D97634] rounded-lg p-12 relative"
+              className="border-2 border-[#D97634] rounded-lg p-2 sm:p-12 relative"
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}

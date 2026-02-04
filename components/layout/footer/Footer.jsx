@@ -15,7 +15,7 @@ const Footer = () => {
             </p>
             <div className="flex justify-center gap-10 text-sm">
               <span>Pathao Foods</span>
-              <span className="text-orange-500">·</span>
+              {/* <span className="text-orange-500">·</span> */}
               <span>Foodmandu</span>
             </div>
           </div>
