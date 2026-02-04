@@ -8,6 +8,7 @@ import ShortIntro from "./shortIntro/ShortIntro.jsx";
 import VisitUs from "./visitUs/VisitUs.jsx";
 import OurMenu from "./ourMenu/OurMenu.jsx";
 import Testimonials from "./testimonials/Testimonials.jsx"
+import Footer from "../layout/footer/Footer.jsx"
 
 export default function MainPage() {
   const [scrollY, setScrollY] = useState(0);
@@ -125,7 +126,7 @@ export default function MainPage() {
       {/* Testimonials */}
       <Testimonials/>
 
-    
+    <Footer/>
     </div>
   );
 }
