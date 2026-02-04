@@ -27,7 +27,7 @@ const Testimonials = () => {
       </div>
 
       {/* Guest Experiences Section */}
-      <section className="px-8 py-20 max-w-6xl mx-auto mb-20">
+      <section className="px-8 py-8 max-w-6xl mx-auto mb-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

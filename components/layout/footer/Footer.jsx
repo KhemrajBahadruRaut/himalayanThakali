@@ -79,8 +79,10 @@ const Footer = () => {
 
             <p className="flex justify-center items-center gap-2">
               Powered By
-              <span className="font-semibold text-white">GR8</span>
             </p>
+            <div className="flex justify-center">
+                <img src="/logo/GR8-Nepal-Private-Limited-Logo.webp" alt="gr8.com.np" className="h-8 w-12" />
+            </div>
           </div>
         </div>
       </footer>

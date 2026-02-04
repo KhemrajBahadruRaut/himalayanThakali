@@ -38,81 +38,86 @@ export default function MainPage() {
       </div> */}
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative px-8 py-20 flex items-center justify-between max-w-7xl mx-auto">
-        <motion.div
-          className="flex-1 pr-16"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
-          <h1 className="text-6xl font-bold mb-6 leading-tight">
-            Authentic{" "}
-            <span
-              className="text-[#D97634]"
-              style={{ fontFamily: "Georgia, serif" }}
-            >
-              Thakali
-            </span>
-            <br />
-            Taste Awaits You
-          </h1>
+    <section className="relative px-6 py-12 md:px-8 md:py-10 flex flex-col-reverse lg:flex-row items-center justify-between max-w-7xl mx-auto gap-12 overflow-hidden">
+      
+      {/* Text Content */}
+      <motion.div
+        className="flex-1 text-center lg:text-left"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.3 }}
+      >
+        <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+          Authentic{" "}
+          <span
+            className="text-[#D97634]"
+            style={{ fontFamily: "Georgia, serif" }}
+          >
+            Thakali
+          </span>
+          <br />
+          Taste Awaits You
+        </h1>
 
-          <div className=" bg-linear-to-r from-transparent via-[#E9842C] to-transparent w-54 h-1 mb-8" />
+        {/* Decorative Line - Centered on mobile, left-aligned on desktop */}
+        <div className="mx-auto lg:mx-0 bg-linear-to-r from-transparent via-[#E9842C] to-transparent w-48 h-1 mb-8" />
 
-          <p className="text-gray-400 text-lg leading-relaxed mb-12 max-w-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </p>
+        <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0">
+          Experience the heritage of the Himalayas through our traditional Thakali flavors, 
+          crafted with locally sourced ingredients and time-honored recipes.
+        </p>
 
-          <div className="flex gap-6 ">
-            <motion.button
-              className="px-8 py-3 bg-[#D97634] text-white font-semibold tracking-wide hover:bg-[#E88844] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              EXPLORE OUR MENU
-            </motion.button>
-            <motion.button
-              className="px-8 py-3 border-2 border-[#D97634] text-[#D97634] font-semibold tracking-wide hover:bg-[#D97634] hover:text-white transition-all duration-300"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              OUR STORY
-            </motion.button>
-          </div>
-        </motion.div>
+        <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 md:gap-6">
+          <motion.button
+            className="px-8 py-4 bg-[#D97634] text-white font-semibold tracking-wide shadow-lg"
+            whileHover={{ y: -3, backgroundColor: "#E88844" }}
+            whileTap={{ scale: 0.95 }}
+          >
+            EXPLORE OUR MENU
+          </motion.button>
+          <motion.button
+            className="px-8 py-4 border-2 border-[#D97634] text-[#D97634] font-semibold tracking-wide"
+            whileHover={{ y: -3, backgroundColor: "#D97634", color: "#fff" }}
+            whileTap={{ scale: 0.95 }}
+          >
+            OUR STORY
+          </motion.button>
+        </div>
+      </motion.div>
 
-        {/* Thali Image */}
-        <motion.div
-          className="relative"
-          initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        >
-          <div className="relative">
-            {/* Outer decorative circle */}
-            <div
-              className="hidden md:flex absolute inset-0 border-2 border-dashed border-[#D97634] rounded-full animate-spin-slow"
-              style={{ animationDuration: "30s" }}
-            />
-            {/* Orange background circle */}
-            <div className="w-120 h-120 rounded-full hidden md:flex items-center justify-center shadow-2xl">
-              <div className="w-105 h-105 rounded-full bg-linear-to-br from-[#FF8C42] to-[#D97634] flex items-center justify-center shadow-2xl">
+      {/* Thali Image Container */}
+      <motion.div
+        className="flex-1 flex justify-center items-center relative w-full max-w-75 md:max-w-125 lg:max-w-none"
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1 }}
+      >
+        <div className="relative w-full aspect-square flex items-center justify-center">
+          {/* Outer decorative dashed circle - Hidden on very small screens for cleanliness */}
+          <div
+            className="absolute inset-0 border-2 border-dashed border-[#D97634]/50 rounded-full animate-spin-slow"
+            style={{ animationDuration: "30s" }}
+          />
+          
+          {/* Orange background circle - Scales based on parent width */}
+          <div className="w-[90%] h-[90%] rounded-full bg-linear-to-br from-[#FF8C42] to-[#D97634] flex items-center justify-center shadow-2xl overflow-hidden p-6">
+             <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src="/mainpageimg/thakali.png"
-                  alt="Himalayan Thakali Logo"
-                  width={380}
-                  height={60}
+                  alt="Himalayan Thakali Thali"
+                  width={500}
+                  height={500}
+                  className="object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500  "
                   priority
                 />
-              </div>
-              {/* Inner white circle with thali */}
-            </div>
+             </div>
           </div>
-        </motion.div>
-      </section>
+        </div>
+      </motion.div>
+    </section>
+  
 
       {/* short intro */}
       <ShortIntro />

@@ -1,21 +1,41 @@
-import React from 'react'
-import {motion} from "framer-motion"
+import React from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function OurMenu() {
   return (
     <div>
-       {/* Our Menu Divider */}
+      {/* Our Menu Divider */}
       <div className="flex items-center justify-center gap-4 py-8 px-8">
-        <div className="h-px bg-linear-to-r from-transparent via-[#D97634] to-transparent flex-1" />
+        <div className="h-px bg-linear-to-r from-transparent via-[#D97634] to-transparent w-80" />
         <div className="flex items-center gap-2 text-[#D97634] text-sm tracking-widest">
-          <span className="text-xl"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5M16 4h2a2 2 0 0 1 1.73 1M8 18h1"/><path d="M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></g></svg></span>
+          <span className="text-xl">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <g
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              >
+                <rect width="8" height="4" x="8" y="2" rx="1" />
+                <path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5M16 4h2a2 2 0 0 1 1.73 1M8 18h1" />
+                <path d="M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z" />
+              </g>
+            </svg>
+          </span>
           <span>OUR MENU</span>
         </div>
-        <div className="h-px bg-linear-to-r from-transparent via-[#D97634] to-transparent flex-1" />
+        <div className="h-px bg-linear-to-r from-transparent via-[#D97634] to-transparent w-80" />
       </div>
 
       {/* Dishes We Offer Section */}
-      <section className="px-8 py-20 max-w-7xl mx-auto">
+      <section className="px-8 py-10 max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -31,35 +51,35 @@ export default function OurMenu() {
             ad minim veniam.
           </p>
 
-          <div className="grid grid-cols-4 gap-8 mb-12">
+          <div className="grid max-sm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-12">
             {[
               {
                 title: "Veg / Chicken Thali",
                 description:
                   "Traditional set meal with 12 authentic components including dal, bhat, tarkari, achar, gundruk",
                 price: "Rs. 450/ 550",
-                image: null,
+                image: "/thakali-plates/thakali.png",
               },
               {
                 title: "Veg / Chicken Thali",
                 description:
                   "Traditional set meal with 12 authentic components including dal, bhat, tarkari, achar, gundruk",
                 price: "Rs. 500",
-                image: null,
+                image: "/thakali-plates/p4.png",
               },
               {
                 title: "Veg / Chicken Thali",
                 description:
                   "Traditional set meal with 12 authentic components including dal, bhat, tarkari, achar, gundruk",
                 price: "Rs. 450/ 550",
-                image: null,
+                image: "/thakali-plates/thakali.png",
               },
               {
                 title: "Veg / Chicken Thali",
                 description:
                   "Traditional set meal with 12 authentic components including dal, bhat, tarkari, achar, gundruk",
                 price: "Rs. 500",
-                image: null,
+                image: "/thakali-plates/p4.png",
               },
             ].map((dish, i) => (
               <motion.div
@@ -72,9 +92,20 @@ export default function OurMenu() {
               >
                 {/* Image placeholder - user will add their own images */}
                 <div className="w-full aspect-square rounded-full bg-[#2A2A2A] mb-6 overflow-hidden border-4 border-transparent group-hover:border-[#D97634] transition-all duration-300">
-                  <div className="w-full h-full flex items-center justify-center text-gray-600">
-                    {/* This is where the user's thali image will go */}
-                    <span className="text-sm">Add Thali Image</span>
+                  <div className="w-full  aspect-square rounded-full bg-[#2A2A2A] mb-6 overflow-hidden border-4 border-transparent group-hover:border-[#D97634] transition-all duration-300">
+                    {dish.image ? (
+                      <Image
+                        src={dish.image}
+                        alt={dish.title}
+                        width={300}
+                        height={300}
+                        className="w-full h-full border object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-600 text-sm">
+                        Image Coming Soon
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -99,5 +130,5 @@ export default function OurMenu() {
         </motion.div>
       </section>
     </div>
-  )
+  );
 }
