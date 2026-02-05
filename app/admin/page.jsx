@@ -46,9 +46,9 @@ export default function AdminLogin() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-xl shadow-lg w-87.5"
+        className="bg-white p-8 rounded-xl shadow-lg w-60"
       >
-        <h2 className="text-2xl font-bold text-center mb-6">
+        <h2 className="text-xl font-bold text-center mb-2">
           Admin Login
         </h2>
 
@@ -59,7 +59,7 @@ export default function AdminLogin() {
         <input
           type="email"
           placeholder="Admin Email"
-          className="w-full border p-2 rounded mb-4"
+          className="w-full border text-sm  mb-1 p-1"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
@@ -68,7 +68,7 @@ export default function AdminLogin() {
         <input
           type="password"
           placeholder="Password"
-          className="w-full border p-2 rounded mb-4"
+          className="w-full border text-sm mb-4 p-1"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
@@ -76,7 +76,7 @@ export default function AdminLogin() {
 
         <button
           disabled={loading}
-          className="w-full bg-black text-white p-2 rounded hover:opacity-80"
+          className="w-full bg-black text-white  hover:opacity-80"
         >
           {loading ? "Logging in..." : "Login"}
         </button>

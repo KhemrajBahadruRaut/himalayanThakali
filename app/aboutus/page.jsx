@@ -89,11 +89,11 @@ export default function HimalayantThakaliAbout() {
         {/* Header Section */}
         <header className={`text-center mb-20 opacity-0 ${isVisible ? 'animate-in' : ''}`}>
           <div className="inline-flex items-center gap-4 mb-6">
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#d4a574]" />
+            <div className="h-px w-16 bg-linear-to-r from-transparent to-[#d4a574]" />
             <span className="text-[#d4a574] text-sm tracking-[0.3em] font-light" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               ✧ OUR STORY ✧
             </span>
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#d4a574]" />
+            <div className="h-px w-16 bg-linear-to-l from-transparent to-[#d4a574]" />
           </div>
           
           <h1 className="text-5xl md:text-6xl mb-6" style={{ fontFamily: 'Cormorant Garamond, serif', fontWeight: 300 }}>
@@ -129,7 +129,7 @@ export default function HimalayantThakaliAbout() {
                 </svg>
               </div>
               <div className="relative w-64 h-64 rounded-full overflow-hidden border-2 border-[#d4a574]/30">
-                <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center">
+                <div className="w-full h-full bg-linear-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                   <span className="text-gray-500 text-sm">Profile Image</span>
                 </div>
               </div>

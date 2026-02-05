@@ -47,7 +47,7 @@ const Navbar = () => {
     >
       {/* Desktop */}
       <div className="hidden lg:flex px-8 items-center justify-center">
-        <div className="flex items-center gap-15 text-sm tracking-wider">
+        <div className="flex items-center  text-white  gap-15 text-sm tracking-wider">
           {LEFT_MENU.map((item) => (
             <NavItem
               key={item.label}
@@ -78,15 +78,15 @@ const Navbar = () => {
       <div className="h-px bg-linear-to-r from-transparent via-[#D97634] to-transparent flex-1 mt-3 hidden lg:flex" />
 
       {/* Mobile */}
-      <div className="lg:hidden px-4 flex justify-between items-center">
+      <div className="lg:hidden px-4 flex justify-between items-center ">
         <img
           src="/logo/himalayan-thakalil-logo.png"
           className="w-24"
         />
-        <button onClick={() => setOpen(!open)}>☰</button>
+        <button onClick={() => setOpen(!open)} className="text-white">☰</button>
       </div>
 
-      <div className="h-px bg-linear-to-r from-transparent via-[#D97634] to-transparent flex-1 mt-3 lg:hidden" />
+      <div className="h-px bg-linear-to-r from-transparent  via-[#D97634] to-transparent flex-1 mt-3 lg:hidden" />
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -97,7 +97,7 @@ const Navbar = () => {
             exit={{ height: 0 }}
             className="lg:hidden overflow-hidden"
           >
-            <div className="flex flex-col px-6 py-6 gap-5">
+            <div className="inline-flex flex-col px-6 py-6 text-white gap-5">
               {ALL_MENU.map((item) => (
                 <NavItem
                   key={item.label}
