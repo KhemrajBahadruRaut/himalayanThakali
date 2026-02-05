@@ -50,7 +50,7 @@ export default function ContactPage() {
     <>
       <Navbar />
       <div className="bg-[#1E1E1E] pt-30 px-4 sm:px-6 lg:px-8 ">
-        <div className="max-w-6xl mx-auto pb-10">
+        <div className="max-w-4xl mx-auto  pb-10 ">
           {/* Header */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
@@ -74,7 +74,7 @@ export default function ContactPage() {
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid md:grid-cols-2 gap-8 items-start">
+          <div className="grid md:grid-cols-2 gap-20 items-start">
             {/* Contact Form */}
             <div className="order-2 md:order-1">
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -168,7 +168,7 @@ export default function ContactPage() {
             {/* Contact Info Cards */}
             <div className="space-y-4 order-1 md:order-2">
               {/* Visit Us */}
-              <div className="bg-zinc-800 rounded-lg p-3 text-center">
+              <div className="bg-zinc-800 rounded-lg  p-3 text-center">
                 <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <MapPin className="w-8 h-8 text-white" />
                 </div>
