@@ -27,7 +27,7 @@ const Testimonials = () => {
       </div>
 
       {/* Guest Experiences Section */}
-      <section className="px-8 py-8 max-w-6xl mx-auto mb-20">
+      <section className="px-8 py-8 max-w-5xl mx-auto mb-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,8 +44,23 @@ const Testimonials = () => {
 
           <div className="relative">
             {/* Large opening quote */}
-            <div className="absolute -left-8 -top-8 text-[#D97634] text-8xl opacity-50 leading-none">
-              "
+            <div className="absolute -left-18 -top-10 text-[#D97634] -scale-x-100 -scale-y-100 hidden lg:flex">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="54"
+                height="54"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeMiterlimit="10"
+                  strokeWidth="1.5"
+                  d="M10.99 9.449c.178 3.09-1.998 7.444-6.88 9.551L3 17.08c1.997-1.123 3.507-2.95 4.306-5.15c-2.886-.234-3.729-2.013-3.729-3.464c0-1.967 1.51-3.512 3.374-3.465c1.775-.047 3.817 1.311 4.039 4.448m10 0c.178 3.09-1.997 7.444-6.88 9.551L13 17.08c1.998-1.123 3.507-2.95 4.306-5.15c-2.886-.234-3.729-2.013-3.729-3.464c0-1.967 1.51-3.512 3.374-3.465c1.775-.047 3.817 1.311 4.039 4.448"
+                />
+              </svg>
             </div>
 
             {/* Testimonial Card */}
@@ -75,8 +90,23 @@ const Testimonials = () => {
             </motion.div>
 
             {/* Large closing quote */}
-            <div className="absolute -right-8 -bottom-8 text-[#D97634] text-8xl opacity-50 leading-none">
-              "
+            <div className="absolute -right-18 lg:flex hidden -bottom-10 text-[#D97634]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="54"
+                height="54"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeMiterlimit="10"
+                  strokeWidth="1.5"
+                  d="M10.99 9.449c.178 3.09-1.998 7.444-6.88 9.551L3 17.08c1.997-1.123 3.507-2.95 4.306-5.15c-2.886-.234-3.729-2.013-3.729-3.464c0-1.967 1.51-3.512 3.374-3.465c1.775-.047 3.817 1.311 4.039 4.448m10 0c.178 3.09-1.997 7.444-6.88 9.551L13 17.08c1.998-1.123 3.507-2.95 4.306-5.15c-2.886-.234-3.729-2.013-3.729-3.464c0-1.967 1.51-3.512 3.374-3.465c1.775-.047 3.817 1.311 4.039 4.448"
+                />
+              </svg>
             </div>
           </div>
 
