@@ -1,10 +1,11 @@
-// app/contact/page.jsx or components/ContactPage.jsx
 "use client";
 
 import { useState } from "react";
 import { MapPin, Clock, Phone } from "lucide-react";
 import Navbar from "../../components/layout/navbar/Navbar.jsx";
 import Footer from "../../components/layout/footer/Footer.jsx";
+import Alert from '@mui/material/Alert';
+
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ export default function ContactPage() {
   );
 
   if (res.ok) {
-    alert("Message sent successfully");
+<Alert severity="success">Message sent successfully</Alert>;
     setFormData({
       fullName: "",
       email: "",
@@ -75,7 +76,7 @@ export default function ContactPage() {
 
           {/* Main Content Grid */}
           <div className="grid md:grid-cols-2 gap-20 items-start">
-            {/* Contact Form */}
+            {/* Contact Form */} 
             <div className="order-2 md:order-1">
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Full Name */}
