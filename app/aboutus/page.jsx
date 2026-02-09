@@ -80,8 +80,7 @@ export default function HimalayantThakaliAbout() {
           font-family: "Cormorant Garamond", serif;
           font-size: 4rem;
           line-height: 1;
-          color: #d4a574;
-          opacity: 0.5;
+          color: #D97634;
         }
       `}</style>
 
@@ -135,22 +134,22 @@ export default function HimalayantThakaliAbout() {
           className={`text-center mb-10 opacity-0 ${isVisible ? "animate-in" : ""}`}
         >
           <div className="inline-flex items-center gap-4 mb-6">
-            <div className="h-px w-16 bg-linear-to-r from-transparent to-[#d4a574]" />
+            <div className="h-px  md:w-56 bg-linear-to-r from-transparent to-[#D97634]" />
             <span
-              className="text-[#d4a574] text-sm tracking-[0.3em] font-light"
+              className="text-[#D97634] text-sm tracking-[0.3em] font-light"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               ✧ OUR STORY ✧
             </span>
-            <div className="h-px w-16 bg-linear-to-l from-transparent to-[#d4a574]" />
+            <div className="h-px  md:w-56 bg-linear-to-l from-transparent to-[#D97634]" />
           </div>
 
           <h1
-            className="text-5xl md:text-6xl mb-6"
+            className="text-3xl md:text-5xl mb-6"
             style={{ fontFamily: "Cormorant Garamond, serif", fontWeight: 300 }}
           >
             About Himalayan{" "}
-            <span className="text-[#d4a574] " style={{ fontWeight: 400 }}>
+            <span className="text-[#D97634] " style={{ fontWeight: 400 }}>
               Thakali
             </span>
           </h1>
@@ -212,21 +211,21 @@ export default function HimalayantThakaliAbout() {
           {/* Profile Image */}
           <div className="relative flex justify-center ">
             <div className="relative">
-              <div className="absolute inset-0 -m-4">
+              <div className="absolute inset-0 -m-6">
                 <svg viewBox="0 0 300 300" className="w-full h-full">
                   <circle
                     cx="150"
                     cy="150"
                     r="140"
                     fill="none"
-                    stroke="#d4a574"
+                    stroke="#D97634"
                     strokeWidth="1"
                     className="dashed-circle"
                     strokeDasharray="8 8"
                   />
                 </svg>
-              </div>
-              <div className="relative w-64 h-64 rounded-full overflow-hidden border-2 border-[#d4a574]/30">
+              </div>q 
+              <div className="relative w-54 am:w-64 h-54 sm:h-64 rounded-full overflow-hidden">
                 <div className="w-full h-full bg-linear-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                   <span className="text-gray-500 text-sm">Profile Image</span>
                 </div>
@@ -236,7 +235,7 @@ export default function HimalayantThakaliAbout() {
 
           {/* Quote */}
           <div className="relative  px-8 md:px-10">
-            <div className="quote-mark absolute top-15 -left-4 md:-left-2 transform -scale-x-100 -scale-y-100">
+            <div className="quote-mark absolute top-15 -left-4 md:-left-2 transform -scale-x-100  -scale-y-100">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="44"
@@ -245,11 +244,11 @@ export default function HimalayantThakaliAbout() {
               >
                 <path
                   fill="none"
-                  stroke="currentColor"
+                  stroke="#D97634"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeMiterlimit="10"
-                  strokeWidth="1.5"
+                  strokeWidth="1"
                   d="M10.99 9.449c.178 3.09-1.998 7.444-6.88 9.551L3 17.08c1.997-1.123 3.507-2.95 4.306-5.15c-2.886-.234-3.729-2.013-3.729-3.464c0-1.967 1.51-3.512 3.374-3.465c1.775-.047 3.817 1.311 4.039 4.448m10 0c.178 3.09-1.997 7.444-6.88 9.551L13 17.08c1.998-1.123 3.507-2.95 4.306-5.15c-2.886-.234-3.729-2.013-3.729-3.464c0-1.967 1.51-3.512 3.374-3.465c1.775-.047 3.817 1.311 4.039 4.448"
                 />
               </svg>
@@ -260,13 +259,12 @@ export default function HimalayantThakaliAbout() {
                 style={{
                   fontFamily: "Cormorant Garamond, serif",
                   fontWeight: 400,
-                  color: "#d4a574",
                 }}
               >
                 Lorem ipsum dolor
               </h3>
               <p
-                className="text-center text-[#d4a574]/70 text-sm mb-6 italic"
+                className="text-center text-[#D97634]/70 text-sm mb-6"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 Lorem ipsum
@@ -296,11 +294,11 @@ export default function HimalayantThakaliAbout() {
               >
                 <path
                   fill="none"
-                  stroke="currentColor"
+                  stroke="#D97634"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeMiterlimit="10"
-                  strokeWidth="1.5"
+                  strokeWidth="1"
                   d="M10.99 9.449c.178 3.09-1.998 7.444-6.88 9.551L3 17.08c1.997-1.123 3.507-2.95 4.306-5.15c-2.886-.234-3.729-2.013-3.729-3.464c0-1.967 1.51-3.512 3.374-3.465c1.775-.047 3.817 1.311 4.039 4.448m10 0c.178 3.09-1.997 7.444-6.88 9.551L13 17.08c1.998-1.123 3.507-2.95 4.306-5.15c-2.886-.234-3.729-2.013-3.729-3.464c0-1.967 1.51-3.512 3.374-3.465c1.775-.047 3.817 1.311 4.039 4.448"
                 />
               </svg>
@@ -335,21 +333,21 @@ export default function HimalayantThakaliAbout() {
           {/* Profile Image */}
           <div className="relative flex justify-center ">
             <div className="relative">
-              <div className="absolute inset-0 -m-4">
+              <div className="absolute inset-0 -m-6">
                 <svg viewBox="0 0 300 300" className="w-full h-full">
                   <circle
                     cx="150"
                     cy="150"
                     r="140"
                     fill="none"
-                    stroke="#d4a574"
+                    stroke="#D97634"
                     strokeWidth="1"
                     className="dashed-circle"
                     strokeDasharray="8 8"
                   />
                 </svg>
               </div>
-              <div className="relative w-64 h-64 rounded-full overflow-hidden border-2 border-[#d4a574]/30">
+              <div className="relative w-64 h-64 rounded-full overflow-hidden">
                 <div className="w-full h-full bg-linear-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                   <span className="text-gray-500 text-sm">Profile Image</span>
                 </div>
@@ -365,21 +363,21 @@ export default function HimalayantThakaliAbout() {
           {/* Profile Image */}
           <div className="relative flex justify-center ">
             <div className="relative">
-              <div className="absolute inset-0 -m-4">
+              <div className="absolute inset-0 -m-6">
                 <svg viewBox="0 0 300 300" className="w-full h-full">
                   <circle
                     cx="150"
                     cy="150"
                     r="140"
                     fill="none"
-                    stroke="#d4a574"
+                    stroke="#D97634"
                     strokeWidth="1"
                     className="dashed-circle"
                     strokeDasharray="8 8"
                   />
                 </svg>
               </div>
-              <div className="relative w-64 h-64 rounded-full overflow-hidden border-2 border-[#d4a574]/30">
+              <div className="relative w-64 h-64 rounded-full overflow-hidden">
                 <div className="w-full h-full bg-linear-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                   <span className="text-gray-500 text-sm">Profile Image</span>
                 </div>
@@ -416,21 +414,21 @@ export default function HimalayantThakaliAbout() {
           {/* Profile Image */}
           <div className="relative flex justify-center ">
             <div className="relative">
-              <div className="absolute inset-0 -m-4">
+              <div className="absolute inset-0 -m-6">
                 <svg viewBox="0 0 300 300" className="w-full h-full">
                   <circle
                     cx="150"
                     cy="150"
                     r="140"
                     fill="none"
-                    stroke="#d4a574"
+                    stroke="#D97634"
                     strokeWidth="1"
                     className="dashed-circle"
                     strokeDasharray="8 8"
                   />
                 </svg>
               </div>
-              <div className="relative w-64 h-64 rounded-full overflow-hidden border-2 border-[#d4a574]/30">
+              <div className="relative w-64 h-64 rounded-full overflow-hidden">
                 <div className="w-full h-full bg-linear-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                   <span className="text-gray-500 text-sm">Profile Image</span>
                 </div>
