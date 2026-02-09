@@ -224,8 +224,8 @@ export default function HimalayantThakaliAbout() {
                     strokeDasharray="8 8"
                   />
                 </svg>
-              </div>q 
-              <div className="relative w-54 am:w-64 h-54 sm:h-64 rounded-full overflow-hidden">
+              </div>
+              <div className="relative w-54 sm:w-64 h-54 sm:h-64 rounded-full overflow-hidden">
                 <div className="w-full h-full bg-linear-to-br from-gray-700 to-gray-800 flex items-center justify-center">
                   <span className="text-gray-500 text-sm">Profile Image</span>
                 </div>
