@@ -1,8 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function OurMenu() {
+  const router = useRouter();
   return (
     <div>
       {/* Our Menu Divider */}
@@ -120,6 +122,7 @@ export default function OurMenu() {
 
           <div className="text-center">
             <motion.button
+              onClick={() => router.push("/menu")}
               className="px-10 py-4 bg-[#D97634] text-white font-semibold tracking-wide hover:bg-[#E88844] transition-all duration-300 shadow-lg hover:shadow-xl"
               whileHover={{ y: -2, scale: 1.05 }}
               whileTap={{ scale: 0.98 }}

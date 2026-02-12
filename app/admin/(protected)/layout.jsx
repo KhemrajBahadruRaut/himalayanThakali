@@ -5,6 +5,8 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { LayoutDashboard, LogOut, Menu, X} from "lucide-react";
 import { Contact } from "lucide-react";
+import { MenuIcon } from "lucide-react";
+import { GalleryHorizontalEndIcon } from "lucide-react";
 
 export default function AdminLayout({ children }) {
   const router = useRouter();
@@ -59,8 +61,9 @@ export default function AdminLayout({ children }) {
           {/* Note: We pass the 'active' prop based on the current pathname */}
           <SidebarItem icon={<LayoutDashboard size={20} />} text="Dashboard" href="/admin/dashboard" active={pathname === "/admin/dashboard"} />
           <SidebarItem icon={<Contact size={20} />} text="Contacts" href="/admin/contacts-table" active={pathname === "/admin/contacts-table"} />
-          <SidebarItem icon={<Contact size={20} />} text="menu" href="/admin/menu-table" active={pathname === "/admin/menu-table"} />
-          {/* <SidebarItem icon={<ShoppingBag size={20} />} text="Orders" href="/admin/orders" active={pathname === "/admin/orders"} />
+          <SidebarItem icon={<MenuIcon size={20} />} text="menu" href="/admin/menu-table" active={pathname === "/admin/menu-table"} />
+          <SidebarItem icon={<GalleryHorizontalEndIcon size={20} />} text="Gallery" href="/admin/admin-gallery" active={pathname === "/admin/admin-gallery"} />
+          {/* 
           <SidebarItem icon={<BarChart3 size={20} />} text="Analytics" href="/admin/analytics" active={pathname === "/admin/analytics"} />
           <SidebarItem icon={<Settings size={20} />} text="Settings" href="/admin/settings" active={pathname === "/admin/settings"} /> */}
         </nav>

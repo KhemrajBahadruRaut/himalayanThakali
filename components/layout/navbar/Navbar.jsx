@@ -43,11 +43,11 @@ const Navbar = () => {
     <motion.nav
       animate={{ y: hidden ? -120 : 0 }}
       transition={{ duration: 0.35 }}
-      className="fixed  top-0  bg-[#1E1E1E] left-0 w-full z-50 backdrop-blur-md pt-3"
+      className="fixed  top-0  bg-[#1E1E1E] left-0 w-full  z-50 backdrop-blur-md pt-3"
     >
       {/* Desktop */}
-      <div className="hidden lg:flex px-8 items-center justify-center">
-        <div className="flex items-center  text-white  gap-15 text-sm tracking-wider">
+      <div className="hidden lg:flex px-8  items-center justify-center">
+        <div className="flex items-center text-white  gap-15 text-sm tracking-wider">
           {LEFT_MENU.map((item) => (
             <NavItem
               key={item.label}
@@ -122,7 +122,7 @@ const NavItem = ({ label, path, pathname, onClick }) => {
     <Link
       href={path}
       onClick={onClick}
-      className={`relative group transition ${
+      className={`relative   group transition ${
         isActive ? "text-[#D97634]" : ""
       }`}
     >

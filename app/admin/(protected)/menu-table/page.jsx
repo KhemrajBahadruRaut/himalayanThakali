@@ -103,9 +103,9 @@ export default function MenuAdmin() {
   };
 
   return (
-    <div className="p-4 md:p-8 max-w-7xl mx-auto bg-gray-50 min-h-screen font-sans text-slate-900">
+    <div className=" max-w-7xl mx-auto bg-gray-50 min-h-screen font-sans text-slate-900">
       {/* Header */}
-      <header className="flex items-center justify-between mb-10">
+      <header className="flex items-center justify-between mb-5">
         <div>
           <h1 className="text-4xl font-extrabold text-slate-800 tracking-tight flex items-center gap-3">
             <Utensils className="text-[#E9842C]" size={36} />
@@ -117,10 +117,10 @@ export default function MenuAdmin() {
         </div>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-2">
         {/* Left Column: Categories */}
-        <div className="lg:col-span-4 space-y-6">
-          <div className="bg-white shadow-sm rounded-2xl p-6 border border-slate-200">
+        <div className="lg:col-span-3 space-y-1">
+          <div className="bg-white shadow-sm rounded p-3 border border-slate-200">
             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
               <FolderPlus size={20} className="text-[#E9842C]" />
               Categories
@@ -178,11 +178,11 @@ export default function MenuAdmin() {
         </div>
 
         {/* Right Column: Items */}
-        <div className="lg:col-span-8">
+        <div className="lg:col-span-9">
           {activeCategory ? (
             <div className="space-y-6">
               {/* Form Card */}
-              <div className="bg-white shadow-sm rounded-2xl p-6 border border-slate-200">
+              <div className="bg-white shadow-sm rounded p-6 border border-slate-200">
                 <h2 className="text-lg font-bold mb-4">Add New Item</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <input
@@ -231,7 +231,7 @@ export default function MenuAdmin() {
               </div>
 
               {/* Items List */}
-              <div className="bg-white shadow-sm rounded-2xl overflow-hidden border border-slate-200">
+              <div className="bg-white shadow-sm rounded overflow-hidden border border-slate-200">
                 <div className="p-6 border-b border-slate-100 flex justify-between items-center">
                   <h2 className="font-bold text-xl text-slate-800">
                     Menu Items
@@ -299,7 +299,7 @@ export default function MenuAdmin() {
               </div>
             </div>
           ) : (
-            <div className="h-full flex flex-col items-center justify-center bg-white border-2 border-dashed border-slate-200 rounded-3xl p-12 text-center">
+            <div className="h-full flex flex-col items-center justify-center bg-white border-2 border-dashed border-slate-200 rounded p-12 text-center">
               <div className="bg-orange-50 p-6 rounded-full mb-4">
                 <Utensils size={48} className="text-[#E9842C]" />
               </div>

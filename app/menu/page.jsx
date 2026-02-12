@@ -138,7 +138,7 @@ const MenuPage = () => {
                       </p>
 
                       <p className="text-center text-orange-500 font-medium">
-                        Rs. {item.price}
+                        Rs. {item.price}/-
                       </p>
                     </div>
                   ))}
@@ -172,7 +172,7 @@ const MenuPage = () => {
                       </p>
 
                       <p className="text-center text-orange-500 font-medium">
-                        Rs. {items[3].price}
+                        Rs. {items[3].price}/-
                       </p>
                     </div>
                   </div>
@@ -205,7 +205,7 @@ const MenuPage = () => {
                   </p>
 
                   <p className="text-center text-orange-500 font-medium">
-                    Rs. {items[3].price}
+                    Rs. {items[3].price}/-
                   </p>
                 </div>
               </div>
@@ -252,7 +252,7 @@ const MenuPage = () => {
                 </p>
 
                 <p className="text-center text-orange-500 font-medium text-lg">
-                  Rs. {selectedItem.price}
+                  Rs. {selectedItem.price}/-
                 </p>
               </div>
             </div>
