@@ -107,8 +107,8 @@ export default function MenuAdmin() {
       {/* Header */}
       <header className="flex items-center justify-between mb-5">
         <div>
-          <h1 className="text-4xl font-extrabold text-slate-800 tracking-tight flex items-center gap-3">
-            <Utensils className="text-[#E9842C]" size={36} />
+          <h1 className="text-2xl font-extrabold text-slate-800 tracking-tight flex items-center gap-3">
+            <Utensils className="text-[#E9842C]" size={20} />
             Menu <span className="text-[#E9842C]">Management</span>
           </h1>
           <p className="text-slate-500 mt-1">
@@ -151,7 +151,7 @@ export default function MenuAdmin() {
                 <div
                   key={cat.id}
                   onClick={() => handleCategoryClick(cat.id)}
-                  className={`group flex justify-between items-center p-3 rounded-xl cursor-pointer transition-all duration-200 ${
+                  className={`group flex justify-between items-center px-2 py-1 rounded-lg cursor-pointer transition-all duration-200 ${
                     activeCategory === cat.id
                       ? "bg-[#E9842C] text-white shadow-lg"
                       : "hover:bg-orange-50 text-slate-600"

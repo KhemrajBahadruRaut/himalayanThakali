@@ -1,5 +1,6 @@
 "use client";
 
+import { Contact } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function AdminContactPage() {
@@ -49,8 +50,8 @@ export default function AdminContactPage() {
 
   return (
     <div className="min-h-screen ">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">
-        Contact Messages
+      <h1 className="text-2xl font-bold flex items-center gap-2 text-gray-800 mb-6">
+       <Contact className="text-[#E9842C] size-6"/>Contact Messages
       </h1>
 
       {/* TABLE */}

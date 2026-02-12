@@ -258,8 +258,12 @@ const MenuPage = () => {
             </div>
           )}
         </div>
+<div className="pt-10">
+
+      <Footer />
+</div>
       </div>
-      <Footer/>
+
     </>
   );
 };
