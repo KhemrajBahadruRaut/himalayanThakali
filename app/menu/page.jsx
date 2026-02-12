@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/layout/navbar/Navbar";
+import Footer from "../../components/layout/footer/Footer";
 
 const API = "http://localhost/himalayanthakali_backend/menu";
 
@@ -50,8 +51,8 @@ const MenuPage = () => {
       <div className="bg-[#1E1E1E] text-white pt-24">
         <div className="flex flex-col lg:flex-row">
           {/* ================= Sidebar ================= */}
-          <aside className="w-full lg:w-64 border-b lg:border-b-0 lg:border-r border-gray-800 p-4 lg:p-6 lg:min-h-screen">
-            <h2 className="text-orange-500 font-bold text-xl mb-4 lg:mb-6">
+          <aside className="w-full lg:w-64 border-b lg:border-b-0 lg:border-r border-gray-800 p-4  pt-20 ">
+            <h2 className="text-[#E9842C] font-bold text-xl mb-4 lg:mb-6 text-center">
               MENU
             </h2>
 
@@ -77,11 +78,10 @@ const MenuPage = () => {
 
           {/* ================= Main Content ================= */}
           <main className="flex-1 p-4 sm:p-6 lg:p-8">
-            {/* Header (UNCHANGED) */}
             <div className="text-center mb-10">
               <div className="flex items-center justify-center gap-3 mb-4">
                 <div className="h-px w-20 sm:w-32 bg-linear-to-r from-transparent to-orange-500" />
-                <div className="flex items-center gap-2 text-orange-500">
+                <div className="flex items-center gap-2 text-[#E9842C]">
                   <span className="uppercase tracking-wider text-sm font-medium">
                     Our Menu
                   </span>
@@ -259,6 +259,7 @@ const MenuPage = () => {
           )}
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

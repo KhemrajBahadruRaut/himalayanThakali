@@ -48,7 +48,7 @@ export default function AdminContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 ">
+    <div className="min-h-screen ">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
         Contact Messages
       </h1>
