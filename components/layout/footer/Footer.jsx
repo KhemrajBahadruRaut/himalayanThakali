@@ -1,10 +1,11 @@
 import React from "react";
 import { Facebook, Instagram } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
     <>
-            <div className="h-px bg-linear-to-r from-transparent via-[#D97634] to-transparent flex-1" />
+      <div className="h-px bg-linear-to-r from-transparent via-[#D97634] to-transparent flex-1" />
 
       <footer className="bg-[#1c1c1c] text-gray-300 ">
         <div className="max-w-7xl mx-auto px-6 py-14 text-center space-y-10">
@@ -23,22 +24,21 @@ const Footer = () => {
           {/* Navigation */}
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm tracking-widest">
             {[
-              "HOME",
-              "ABOUT US",
-              "MENU",
-              "CSR",
-              "GALLERY",
-              "SERVICES",
-              "BLOGS",
-              "CONTACT US",
+              { name: "HOME", path: "/" },
+              { name: "ABOUT US", path: "/aboutus" },
+              { name: "MENU", path: "/menu" },
+              { name: "GALLERY", path: "/gallery" },
+              { name: "SERVICES", path: "/services" },
+              { name: "BLOGS", path: "/blogs" },
+              { name: "CONTACT US", path: "/contact-us" },
             ].map((item) => (
-              <a
-                key={item}
-                href="#"
+              <Link
+                key={item.name}
+                href={item.path}
                 className="hover:text-orange-500 transition-colors"
               >
-                {item}
-              </a>
+                {item.name}
+              </Link>
             ))}
           </nav>
 
@@ -77,11 +77,19 @@ const Footer = () => {
               </a>
             </p>
 
-            <p className="flex justify-center items-center gap-2">
-              Powered By
-            </p>
+            <p className="flex justify-center items-center gap-2">Powered By</p>
             <div className="flex justify-center">
-                <img src="/logo/GR8-Nepal-Private-Limited-Logo.webp" alt="gr8.com.np" className="h-8 w-12" />
+              <a
+                href="https://gr8.com.np"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/logo/GR8-Nepal-Private-Limited-Logo.webp"
+                  alt="gr8.com.np"
+                  className="h-8 w-12"
+                />
+              </a>
             </div>
           </div>
         </div>

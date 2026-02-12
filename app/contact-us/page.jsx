@@ -55,12 +55,12 @@ export default function ContactPage() {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-px w-20 bg-linear-to-r from-transparent to-orange-500"></div>
+              <div className="h-px w-50 bg-linear-to-r from-transparent to-orange-500"></div>
               <div className="flex items-center gap-2 text-orange-500 text-sm font-medium">
                 <Phone className="w-4 h-4" />
                 <span>CONTACT US</span>
               </div>
-              <div className="h-px w-20 bg-linear-to-l from-transparent to-orange-500"></div>
+              <div className="h-px w-50 bg-linear-to-l from-transparent to-orange-500"></div>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
