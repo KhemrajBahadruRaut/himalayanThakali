@@ -1,63 +1,47 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/layout/navbar/Navbar";
-import { MenuList } from "@mui/material";
+
+const API = "http://localhost/himalayanthakali_backend/menu";
 
 const MenuPage = () => {
-  const thaliItems = [
-    {
-      id: 1,
-      name: "Veg / Chicken Thali",
-      description:
-        "Traditional set meal with 12 authentic components including dal, bhat, tarkari, achar, gunduk",
-      price: "Rs. 450/550",
-      image: "/thakali-plates/thakali.png",
-    },
-    {
-      id: 2,
-      name: "Veg / Chicken Thali",
-      description:
-        "Traditional set meal with 12 authentic components including dal, bhat, tarkari, achar, gunduk",
-      price: "Rs. 500",
-      image: "/thakali-plates/p4.png",
-    },
-    {
-      id: 3,
-      name: "Veg / Chicken Thali",
-      description:
-        "Traditional set meal with 12 authentic components including dal, bhat, tarkari, achar, gunduk",
-      price: "Rs. 450/550",
-      image: "/thakali-plates/p4.png",
-    },
-    {
-      id: 4,
-      name: "Veg / Chicken Thali",
-      description:
-        "Traditional set meal with 12 authentic components including dal, bhat, tarkari, achar, gunduk",
-      price: "Rs. 500",
-      image: "/thakali-plates/p4.png",
-    },
-  ];
+  const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [items, setItems] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const menuCategories = [
-    { name: "Thali Set", active: true },
-    { name: "Buff Items", active: false },
-    { name: "Chicken Items", active: false },
-    { name: "Fish Items", active: false },
-    { name: "Veg Snacks", active: false },
-    { name: "Pork Items", active: false },
-    { name: "Egg Items", active: false },
-    { name: "Boiled Items", active: false },
-    { name: "Biryani", active: false },
-    { name: "Pizza", active: false },
-    { name: "Soup & Salad", active: false },
-    { name: "Sekuwa", active: false },
-    { name: "Momo", active: false },
-    { name: "Noodles", active: false },
-    { name: "Katti Rolls & Stick Foods", active: false },
-  ];
+  // ================= Fetch Categories =================
+  const fetchCategories = async () => {
+    try {
+      const res = await fetch(`${API}/get_categories.php`);
+      const data = await res.json();
+      setCategories(data);
+
+      if (data.length > 0) {
+        setActiveCategory(data[0].id);
+        fetchItems(data[0].id);
+      }
+    } catch (err) {
+      console.error("Error fetching categories:", err);
+    }
+  };
+
+  // ================= Fetch Items =================
+  const fetchItems = async (id) => {
+    try {
+      setActiveCategory(id);
+      const res = await fetch(`${API}/get_items.php?category_id=${id}`);
+      const data = await res.json();
+      setItems(data);
+    } catch (err) {
+      console.error("Error fetching items:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   return (
     <>
@@ -73,11 +57,12 @@ const MenuPage = () => {
 
             <nav className="overflow-x-auto lg:overflow-visible">
               <ul className="flex lg:flex-col gap-2 min-w-max lg:min-w-0">
-                {menuCategories.map((category, index) => (
-                  <li key={index}>
+                {categories.map((category) => (
+                  <li key={category.id}>
                     <button
+                      onClick={() => fetchItems(category.id)}
                       className={`whitespace-nowrap w-full px-4 py-2 rounded transition-colors text-sm lg:text-base ${
-                        category.active
+                        activeCategory === category.id
                           ? "bg-orange-500 text-white font-medium"
                           : "text-gray-300 hover:bg-gray-700"
                       }`}
@@ -92,13 +77,13 @@ const MenuPage = () => {
 
           {/* ================= Main Content ================= */}
           <main className="flex-1 p-4 sm:p-6 lg:p-8">
-            {/* Header */}
+            {/* Header (UNCHANGED) */}
             <div className="text-center mb-10">
               <div className="flex items-center justify-center gap-3 mb-4">
                 <div className="h-px w-20 sm:w-32 bg-linear-to-r from-transparent to-orange-500" />
                 <div className="flex items-center gap-2 text-orange-500">
                   <span className="uppercase tracking-wider text-sm font-medium">
-                     Our Menu
+                    Our Menu
                   </span>
                 </div>
                 <div className="h-px w-20 sm:w-32 bg-linear-to-l from-transparent to-orange-500" />
@@ -109,61 +94,169 @@ const MenuPage = () => {
               </h1>
             </div>
 
-            {/* ================= Thali Grid ================= */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-10">
-              {thaliItems.slice(0, 3).map((item) => (
-                <div
-                  key={item.id}
-                  className="rounded-lg p-6 bg-gray-800/50 hover:bg-gray-800 transition-colors"
-                >
+            {/* ================= Items Grid ================= */}
+            {/* ================= Items Section ================= */}
+            {items.length === 0 ? (
+              <div className="flex justify-center items-center py-20">
+                <div className="text-center">
+                  <h3 className="text-xl font-semibold text-gray-300 mb-2">
+                    No Items Available
+                  </h3>
+                  <p className="text-gray-500 text-sm">
+                    There are no items in this category at the moment.
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <>
+                {/* ================= Items Grid ================= */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-10">
+                  {items.slice(0, 3).map((item) => (
+                    <div
+                      key={item.id}
+                      onClick={() => setSelectedItem(item)}
+                      className="rounded-lg p-6 bg-gray-800/50 hover:bg-gray-800 transition-colors cursor-pointer"
+                    >
+                      <div className="aspect-square max-w-55 mx-auto rounded-full overflow-hidden mb-4 bg-gray-700">
+                        <img
+                          src={
+                            item.image
+                              ? `${API}/uploads/${item.image}`
+                              : "/placeholder.png"
+                          }
+                          alt={item.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+
+                      <h3 className="text-lg font-semibold text-center mb-2">
+                        {item.name}
+                      </h3>
+
+                      <p className="text-gray-400 text-xs text-center mb-4 leading-relaxed">
+                        {item.description}
+                      </p>
+
+                      <p className="text-center text-orange-500 font-medium">
+                        Rs. {item.price}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* ================= Single Item ================= */}
+                {items.length > 3 && (
+                  <div className="max-w-sm mx-auto px-2 sm:px-0">
+                    <div
+                      onClick={() => setSelectedItem(items[3])}
+                      className="rounded-lg p-6 bg-gray-800/50 hover:bg-gray-800 transition-colors cursor-pointer"
+                    >
+                      <div className="aspect-square max-w-55 mx-auto rounded-full overflow-hidden mb-4 bg-gray-700">
+                        <img
+                          src={
+                            items[3].image
+                              ? `${API}/uploads/${items[3].image}`
+                              : "/placeholder.png"
+                          }
+                          alt={items[3].name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+
+                      <h3 className="text-lg font-semibold text-center mb-2">
+                        {items[3].name}
+                      </h3>
+
+                      <p className="text-gray-400 text-xs text-center mb-4 leading-relaxed">
+                        {items[3].description}
+                      </p>
+
+                      <p className="text-center text-orange-500 font-medium">
+                        Rs. {items[3].price}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* ================= Single Item (4th Item Layout Preserved) ================= */}
+            {items.length > 3 && (
+              <div className="max-w-sm mx-auto px-2 sm:px-0">
+                <div className="rounded-lg p-6 bg-gray-800/50 hover:bg-gray-800 transition-colors">
                   <div className="aspect-square max-w-55 mx-auto rounded-full overflow-hidden mb-4 bg-gray-700">
                     <img
-                      src={item.image}
-                      alt={item.name}
+                      src={
+                        items[3].image
+                          ? `${API}/uploads/${items[3].image}`
+                          : "/placeholder.png"
+                      }
+                      alt={items[3].name}
                       className="w-full h-full object-cover"
                     />
                   </div>
 
                   <h3 className="text-lg font-semibold text-center mb-2">
-                    {item.name}
+                    {items[3].name}
                   </h3>
 
                   <p className="text-gray-400 text-xs text-center mb-4 leading-relaxed">
-                    {item.description}
+                    {items[3].description}
                   </p>
 
                   <p className="text-center text-orange-500 font-medium">
-                    {item.price}
+                    Rs. {items[3].price}
                   </p>
                 </div>
-              ))}
-            </div>
+              </div>
+            )}
+          </main>
+          {/* ================= Modal ================= */}
+          {selectedItem && (
+            <div
+              className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 px-4"
+              onClick={() => setSelectedItem(null)}
+            >
+              <div
+                className="bg-[#1E1E1E] max-w-md w-full rounded-lg p-6 relative"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedItem(null)}
+                  className="absolute top-3 right-3 text-gray-400 hover:text-white"
+                >
+                  ✕
+                </button>
 
-            {/* ================= Single Item ================= */}
-            <div className="max-w-sm mx-auto px-2 sm:px-0">
-              <div className="rounded-lg p-6 bg-gray-800/50 hover:bg-gray-800 transition-colors">
-                <div className="aspect-square max-w-55 mx-auto rounded-full overflow-hidden mb-4 bg-gray-700">
+                {/* Image */}
+                <div className="aspect-square rounded-lg overflow-hidden mb-4 bg-gray-700">
                   <img
-                    src={thaliItems[3].image}
-                    alt={thaliItems[3].name}
+                    src={
+                      selectedItem.image
+                        ? `${API}/uploads/${selectedItem.image}`
+                        : "/placeholder.png"
+                    }
+                    alt={selectedItem.name}
                     className="w-full h-full object-cover"
                   />
                 </div>
 
-                <h3 className="text-lg font-semibold text-center mb-2">
-                  {thaliItems[3].name}
-                </h3>
+                {/* Content */}
+                <h2 className="text-xl font-semibold mb-2 text-center">
+                  {selectedItem.name}
+                </h2>
 
-                <p className="text-gray-400 text-xs text-center mb-4 leading-relaxed">
-                  {thaliItems[3].description}
+                <p className="text-gray-400 text-sm text-center mb-4">
+                  {selectedItem.description}
                 </p>
 
-                <p className="text-center text-orange-500 font-medium">
-                  {thaliItems[3].price}
+                <p className="text-center text-orange-500 font-medium text-lg">
+                  Rs. {selectedItem.price}
                 </p>
               </div>
             </div>
-          </main>
+          )}
         </div>
       </div>
     </>
