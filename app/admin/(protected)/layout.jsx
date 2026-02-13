@@ -8,6 +8,7 @@ import { Contact } from "lucide-react";
 import { MenuIcon } from "lucide-react";
 import { GalleryHorizontalEndIcon } from "lucide-react";
 import { Workflow } from "lucide-react";
+import { Newspaper } from "lucide-react";
 
 export default function AdminLayout({ children }) {
   const router = useRouter();
@@ -65,8 +66,10 @@ export default function AdminLayout({ children }) {
           <SidebarItem icon={<MenuIcon size={20} />} text="menu" href="/admin/menu-table" active={pathname === "/admin/menu-table"} />
           <SidebarItem icon={<GalleryHorizontalEndIcon size={20} />} text="Gallery" href="/admin/admin-gallery" active={pathname === "/admin/admin-gallery"} />
           <SidebarItem icon={<Workflow size={20} />} text="Career" href="/admin/admin-career" active={pathname === "/admin/admin-career"} />
+          <SidebarItem icon={<Newspaper size={20} />} text="Blogs" href="/admin/admin-blogs" active={pathname === "/admin/admin-blogs"} />
           {/* 
-          <SidebarItem icon={<Settings size={20} />} text="Settings" href="/admin/settings" active={pathname === "/admin/settings"} /> */}
+          <SidebarItem icon={<Settings size={20} />} text="Settings" href="/admin/settings" active={pathname === "/admin/settings"} />
+           */}
         </nav>
 
         <div className="p-4 border-t border-slate-800">
