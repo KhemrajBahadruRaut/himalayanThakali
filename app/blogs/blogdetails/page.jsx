@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../../components/layout/navbar/Navbar";
 import Footer from "../../../components/layout/footer/Footer";
 import { useSearchParams } from "next/navigation";
-import "quill/dist/quill.snow.css"; 
+import "quill/dist/quill.snow.css";
 
 const BlogDetails = () => {
   const searchParams = useSearchParams();
@@ -18,7 +18,7 @@ const BlogDetails = () => {
     const fetchBlog = async () => {
       try {
         const res = await fetch(
-          `${API_BASE}/blogs/get_single_blog.php?id=${id}`
+          `${API_BASE}/blogs/get_single_blog.php?id=${id}`,
         );
         const data = await res.json();
         if (data.success) {
@@ -40,9 +40,7 @@ const BlogDetails = () => {
       <Navbar />
       <div className="bg-[#1E1E1E] text-white px-4 pt-30">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-serif mb-6">
-            {blog.title}
-          </h1>
+          <h1 className="text-4xl font-serif mb-6">{blog.title}</h1>
 
           <img
             src={`${API_BASE}/${blog.image}`}
@@ -55,11 +53,10 @@ const BlogDetails = () => {
           </p>
 
           {/* ✅ Proper Quill Styled Output */}
-          <div className="ql-editor text-gray-300 leading-8">
-            <div
-              dangerouslySetInnerHTML={{ __html: blog.content }}
-            />
-          </div>
+          <div
+            className="blog-content text-gray-300 leading-8"
+            dangerouslySetInnerHTML={{ __html: blog.content }}
+          />
         </div>
 
         <div className="pt-20">
