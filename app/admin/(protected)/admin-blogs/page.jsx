@@ -1,8 +1,14 @@
-"use client"
-import React, { useEffect, useState } from "react";
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import Quill from "quill";
+import "quill/dist/quill.snow.css";
 
 const AdminBlogs = () => {
   const API_BASE = "http://localhost/himalayanthakali_backend";
+
+  const editorRef = useRef(null);
+  const quillRef = useRef(null);
 
   const [blogs, setBlogs] = useState([]);
   const [editingId, setEditingId] = useState(null);
@@ -13,6 +19,38 @@ const AdminBlogs = () => {
     short_description: "",
     content: "",
   });
+
+  // ================= Initialize Quill =================
+  useEffect(() => {
+    if (editorRef.current && !quillRef.current) {
+      quillRef.current = new Quill(editorRef.current, {
+        theme: "snow",
+        modules: {
+          toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ["bold", "italic", "underline", "strike"],
+            [{ list: "ordered" }, { list: "bullet" }],
+            ["link", "image"],
+            ["clean"],
+          ],
+        },
+      });
+
+      quillRef.current.on("text-change", () => {
+        setFormData((prev) => ({
+          ...prev,
+          content: quillRef.current.root.innerHTML,
+        }));
+      });
+    }
+  }, []);
+
+  // ================= Sync Content When Editing =================
+  useEffect(() => {
+    if (quillRef.current && editingId !== null) {
+      quillRef.current.root.innerHTML = formData.content;
+    }
+  }, [editingId]);
 
   // ================= Fetch Blogs =================
   const fetchBlogs = async () => {
@@ -27,7 +65,6 @@ const AdminBlogs = () => {
     fetchBlogs();
   }, []);
 
-  // ================= Handle Input =================
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -35,7 +72,6 @@ const AdminBlogs = () => {
     });
   };
 
-  // ================= Reset =================
   const resetForm = () => {
     setEditingId(null);
     setImageFile(null);
@@ -44,6 +80,10 @@ const AdminBlogs = () => {
       short_description: "",
       content: "",
     });
+
+    if (quillRef.current) {
+      quillRef.current.root.innerHTML = "";
+    }
   };
 
   // ================= Create =================
@@ -52,7 +92,10 @@ const AdminBlogs = () => {
     formDataObj.append("title", formData.title);
     formDataObj.append("short_description", formData.short_description);
     formDataObj.append("content", formData.content);
-    formDataObj.append("image", imageFile);
+
+    if (imageFile) {
+      formDataObj.append("image", imageFile);
+    }
 
     const res = await fetch(`${API_BASE}/blogs/create_blog.php`, {
       method: "POST",
@@ -70,6 +113,8 @@ const AdminBlogs = () => {
 
   // ================= Update =================
   const handleUpdate = async () => {
+    if (!editingId) return;
+
     const formDataObj = new FormData();
     formDataObj.append("id", editingId);
     formDataObj.append("title", formData.title);
@@ -94,7 +139,6 @@ const AdminBlogs = () => {
     }
   };
 
-  // ================= Delete =================
   const handleDelete = async (id) => {
     if (!confirm("Delete this blog?")) return;
 
@@ -112,7 +156,6 @@ const AdminBlogs = () => {
     }
   };
 
-  // ================= Edit =================
   const handleEdit = (blog) => {
     setEditingId(blog.id);
     setFormData({
@@ -121,131 +164,79 @@ const AdminBlogs = () => {
       content: blog.content || "",
     });
 
+    if (quillRef.current) {
+      quillRef.current.root.innerHTML = blog.content || "";
+    }
+
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <div className="min-h-screen bg-gray-100 p-10">
       <div className="max-w-6xl mx-auto">
-
         <h1 className="text-3xl font-bold mb-8">
           {editingId ? "Update Blog" : "Create Blog"}
         </h1>
 
-        {/* ================= FORM ================= */}
-        <div className="bg-white p-6 rounded shadow mb-12">
-          <div className="grid gap-4">
+        <div className="bg-white p-6 rounded shadow mb-12 grid gap-6">
+          <input
+            type="text"
+            name="title"
+            placeholder="Blog Title"
+            value={formData.title}
+            onChange={handleChange}
+            className="border p-3 rounded"
+          />
 
-            <input
-              type="text"
-              name="title"
-              placeholder="Blog Title"
-              value={formData.title}
-              onChange={handleChange}
-              className="border p-3 rounded"
-              required
-            />
+          <textarea
+            name="short_description"
+            placeholder="Short Description"
+            value={formData.short_description}
+            onChange={handleChange}
+            className="border p-3 rounded"
+            rows="3"
+          />
 
-            <textarea
-              name="short_description"
-              placeholder="Short Description"
-              value={formData.short_description}
-              onChange={handleChange}
-              className="border p-3 rounded"
-              rows="3"
-              required
-            />
+          {/* ===== React 19 Safe Quill Editor ===== */}
+          <div
+            ref={editorRef}
+            className="bg-white"
+            style={{ minHeight: "250px" }}
+          />
 
-            <textarea
-              name="content"
-              placeholder="Full Blog Content (HTML allowed)"
-              value={formData.content}
-              onChange={handleChange}
-              className="border p-3 rounded"
-              rows="6"
-              required
-            />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setImageFile(e.target.files[0])}
+            className="border p-3 rounded"
+          />
 
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setImageFile(e.target.files[0])}
-              className="border p-3 rounded"
-              required={!editingId}
-            />
-
-            <div className="flex gap-4">
-              {editingId ? (
-                <>
-                  <button
-                    onClick={handleUpdate}
-                    className="bg-blue-600 text-white px-6 py-2 rounded"
-                  >
-                    Update Blog
-                  </button>
-
-                  <button
-                    onClick={resetForm}
-                    className="bg-gray-500 text-white px-6 py-2 rounded"
-                  >
-                    Cancel
-                  </button>
-                </>
-              ) : (
+          <div className="flex gap-4">
+            {editingId ? (
+              <>
                 <button
-                  onClick={handleCreate}
-                  className="bg-green-600 text-white px-6 py-2 rounded"
+                  onClick={handleUpdate}
+                  className="bg-blue-600 text-white px-6 py-2 rounded"
                 >
-                  Create Blog
+                  Update Blog
                 </button>
-              )}
-            </div>
-
+                <button
+                  onClick={resetForm}
+                  className="bg-gray-500 text-white px-6 py-2 rounded"
+                >
+                  Cancel
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={handleCreate}
+                className="bg-green-600 text-white px-6 py-2 rounded"
+              >
+                Create Blog
+              </button>
+            )}
           </div>
         </div>
-
-        {/* ================= BLOG LIST ================= */}
-        <h2 className="text-2xl font-semibold mb-6">All Blogs</h2>
-
-        <div className="grid gap-6">
-          {blogs.map((blog) => (
-            <div
-              key={blog.id}
-              className="bg-white p-6 rounded shadow flex justify-between items-center"
-            >
-              <div className="flex items-center gap-4">
-                <img
-                  src={`${API_BASE}/${blog.image}`}
-                  alt={blog.title}
-                  className="w-20 h-20 object-cover rounded"
-                />
-                <div>
-                  <h3 className="font-bold">{blog.title}</h3>
-                  <p className="text-sm text-gray-500">
-                    {new Date(blog.created_at).toDateString()}
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <button
-                  onClick={() => handleEdit(blog)}
-                  className="bg-yellow-500 text-white px-4 py-1 rounded"
-                >
-                  Edit
-                </button>
-
-                <button
-                  onClick={() => handleDelete(blog.id)}
-                  className="bg-red-600 text-white px-4 py-1 rounded"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
       </div>
     </div>
   );

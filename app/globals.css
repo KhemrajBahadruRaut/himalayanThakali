@@ -8,7 +8,3 @@
     transform: rotate(360deg);
   }
 }
-
-.animate-spin-slow {
-  animation: spinSlow 2s linear infinite;
-}
