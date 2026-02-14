@@ -82,46 +82,51 @@ const BlogListingPage = () => {
           </div>
 
           {/* Blog Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-18">
             {blogPosts.map((post) => (
               <div
                 key={post.id}
                 className="group cursor-pointer"
                 onClick={() => handleBlogClick(post.id)}
               >
-                <div className="relative overflow-hidden transition-all duration-300">
+                <div className="relative overflow-hidden transition-all duration-300 h-full">
                   {/* Decorative Borders */}
                   <div className="absolute border-[#D97634] border-t-2 border-l-2 w-50 h-50"></div>
                   <div className="absolute bottom-0 right-0 border-[#D97634] border-b-2 border-r-2 w-50 h-50"></div>
 
-                  <div className="m-10">
-                    {/* Image */}
-                    <div className="relative h-64 border-red-700">
+                  <div className="m-7 flex flex-col h-full">
+                    {/* Fixed Image Section */}
+                    <div className="relative h-60 shrink-0">
                       <img
-                        src={`${API_BASE}/${post.image}`} // ✅ Correct backend URL
+                        src={`${API_BASE}/${post.image}`}
                         alt={post.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </div>
 
-                    {/* Content */}
-                    <div className="bg-[#1a1a1a] border-amber-600 p-4">
+                    {/* Content Section */}
+                    <div className="p-4 flex flex-col grow">
+                      {/* Title */}
                       <h3 className="text-white text-lg font-semibold mb-3 line-clamp-2 group-hover:text-amber-600 transition-colors">
                         {post.title}
                       </h3>
 
-                      <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+                      {/* Description (fixed height) */}
+                      <p className="text-gray-400 text-sm mb-4 line-clamp-3 min-h-18">
                         {post.short_description || post.description}
                       </p>
 
-                      {/* Date */}
+                      {/* Push date to bottom */}
                       <div className="flex justify-end">
+                        {" "}
                         <div className="flex items-center gap-2 text-gray-500 text-sm">
-                          <Calendar className="w-4 h-4" />
+                          {" "}
+                          <Calendar className="w-4 h-4" />{" "}
                           <span>
-                            {new Date(post.created_at).toDateString()}
-                          </span>
-                        </div>
+                            {" "}
+                            {new Date(post.created_at).toDateString()}{" "}
+                          </span>{" "}
+                        </div>{" "}
                       </div>
                     </div>
                   </div>
