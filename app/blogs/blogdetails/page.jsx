@@ -45,14 +45,14 @@ const BlogDetails = () => {
           <img
             src={`${API_BASE}/${blog.image}`}
             alt={blog.title}
-            className="w-full h-96 object-cover mb-10 rounded"
+            className="w-full object-cover mb-10 rounded"
           />
 
           <p className="text-gray-400 mb-10">
             {new Date(blog.created_at).toDateString()}
           </p>
 
-          {/* ✅ Proper Quill Styled Output */}
+          {/* Proper Quill Styled Output */}
           <div
             className="blog-content text-gray-300 leading-8"
             dangerouslySetInnerHTML={{ __html: blog.content }}
