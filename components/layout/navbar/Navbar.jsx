@@ -57,12 +57,16 @@ const Navbar = () => {
             />
           ))}
 
+          <a href="/">
+
           <img
+          alt="himalayah thakali logo"
             src="/logo/himalayan-thakalil-logo.png"
             className={`transition-all duration-300 ${
               shrink ? "w-23" : "w-28"
             }`}
-          />
+            />
+            </a>
 
           {RIGHT_MENU.map((item) => (
             <NavItem
@@ -79,11 +83,10 @@ const Navbar = () => {
 
       {/* Mobile */}
       <div className="lg:hidden px-4 flex justify-between items-center ">
-        <img
-          src="/logo/himalayan-thakalil-logo.png"
-          className="w-24"
-        />
-        <button onClick={() => setOpen(!open)} className="text-white">☰</button>
+        <img src="/logo/himalayan-thakalil-logo.png" className="w-24" />
+        <button onClick={() => setOpen(!open)} className="text-white">
+          ☰
+        </button>
       </div>
 
       <div className="h-px bg-linear-to-r from-transparent  via-[#D97634] to-transparent flex-1 mt-3 lg:hidden" />
