@@ -9,9 +9,11 @@ import VisitUs from "./visitUs/VisitUs.jsx";
 import OurMenu from "./ourMenu/OurMenu.jsx";
 import Testimonials from "./testimonials/Testimonials.jsx";
 import Footer from "../layout/footer/Footer.jsx";
+import { useRouter } from "next/navigation.js";
 
 export default function MainPage() {
   const [scrollY, setScrollY] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -70,13 +72,16 @@ export default function MainPage() {
 
           <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 md:gap-6">
             <motion.button
+              onClick={() => router.push("/menu")}
               className="px-8 py-4 bg-[#E9842C] text-black rounded font-semibold tracking-wide shadow-lg"
               whileHover={{ y: -3, backgroundColor: "#E88844" }}
               whileTap={{ scale: 0.95 }}
             >
               EXPLORE OUR MENU
             </motion.button>
+
             <motion.button
+              onClick={() => router.push("/aboutus")}
               className="px-8 py-4 border-2 border-[#D97634] rounded text-[#D97634] font-semibold tracking-wide"
               whileHover={{ y: -3, backgroundColor: "#E9842C", color: "#fff" }}
               whileTap={{ scale: 0.95 }}

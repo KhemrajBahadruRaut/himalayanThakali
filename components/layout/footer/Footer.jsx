@@ -28,7 +28,7 @@ const Footer = () => {
               { name: "ABOUT US", path: "/aboutus" },
               { name: "MENU", path: "/menu" },
               { name: "GALLERY", path: "/gallery" },
-              { name: "SERVICES", path: "/services" },
+              // { name: "SERVICES", path: "/services" },
               { name: "BLOGS", path: "/blogs" },
               { name: "CONTACT US", path: "/contact-us" },
             ].map((item) => (

@@ -12,6 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://himalayanthakali.com"),
+
   title: {
     default: "Himalayan Thakali | Authentic Nepali Cuisine",
     template: "%s | Himalayan Thakali",
@@ -27,7 +29,7 @@ export const metadata = {
   ],
   authors: [{ name: "Himalayan Thakali Team" }],
   creator: "Himalayan Thakali",
-  // OpenGraph is what shows up when you share your link on Facebook/WhatsApp
+
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -37,26 +39,28 @@ export const metadata = {
     description: "Experience the authentic taste of the Himalayas.",
     images: [
       {
-        url: "/og-image.jpg", // Add an image in your public folder for social previews
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Himalayan Thakali Restaurant",
       },
     ],
   },
-  // Twitter Card
+
   twitter: {
     card: "summary_large_image",
     title: "Himalayan Thakali",
     description: "Authentic Himalayan tastes delivered to your table.",
     images: ["/og-image.jpg"],
   },
+
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
 };
+
 
 import type { ReactNode } from "react";
 
