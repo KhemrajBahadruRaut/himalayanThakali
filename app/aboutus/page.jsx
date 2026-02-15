@@ -72,56 +72,72 @@ export default function HimalayantThakaliAbout() {
         }
 
         .dashed-circle {
-          stroke-dasharray: 10 10;
-          animation: drawCircle 3s ease-out forwards;
+          stroke-dasharray: 4 4;
         }
 
         .quote-mark {
           font-family: "Cormorant Garamond", serif;
           font-size: 4rem;
           line-height: 1;
-          color: #D97634;
+          color: #d97634;
         }
       `}</style>
 
       {/* Decorative Background Elements */}
       <Navbar />
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-20 right-10 w-64 h-64 opacity-10">
+
+      <div className="hidden sm:flex">
+        <div className="absolute top-40 flex justify-center items-center right-60 w-28 h-28 border-2 decorative-circle border-dashed  border-[#E9842C26] rounded-full">
+          <div className="w-22 h-22 border-2  border-dashed border-[#E9842C26] bg-[#E9842C0D] rounded-full" />
+        </div>
+        <div className="absolute top-100 flex justify-center items-center right-200 w-28 h-28 border-2 decorative-circle border-dashed  border-[#E9842C26] rounded-full">
+          <div className="w-22 h-22 border-2  border-dashed border-[#E9842C26] bg-[#E9842C0D] rounded-full" />
+        </div>
+      </div>
+      <div className="inset-0 pointer-events-none overflow-hidden hidden sm:flex">
+        <div className="absolute top-120 right-0 w-64 h-64 ">
           <svg viewBox="0 0 200 200" className="decorative-circle">
             <circle
               cx="100"
               cy="100"
-              r="90"
+              r="100"
               fill="none"
-              stroke="#d4a574"
-              strokeWidth="1"
+              stroke="#E9842C4D"
+              strokeWidth="0.5"
               className="dashed-circle"
             />
             <circle
+              className="dashed-circle"
               cx="100"
               cy="100"
-              r="70"
-              fill="none"
-              stroke="#d4a574"
+              r="90"
+              fill="#E9842C0D"
+              stroke="#E9842C4D"
+              strokeOpacity="100"
               strokeWidth="0.5"
-              opacity="0.5"
             />
           </svg>
         </div>
-        <div
-          className="absolute bottom-32 right-20 w-48 h-48 opacity-10"
-          style={{ animationDelay: "2s" }}
-        >
+        <div className="absolute top-80 -left-30 w-64 h-64 ">
           <svg viewBox="0 0 200 200" className="decorative-circle">
             <circle
               cx="100"
               cy="100"
-              r="90"
+              r="100"
               fill="none"
-              stroke="#d4a574"
-              strokeWidth="1"
+              stroke="#E9842C4D"
+              strokeWidth="0.5"
               className="dashed-circle"
+            />
+            <circle
+              className="dashed-circle"
+              cx="100"
+              cy="100"
+              r="90"
+              fill="#E9842C0D"
+              stroke="#E9842C4D"
+              strokeOpacity="100"
+              strokeWidth="0.5"
             />
           </svg>
         </div>

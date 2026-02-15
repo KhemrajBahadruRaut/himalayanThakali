@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../layout/navbar/Navbar.jsx";
 import Image from "next/image.js";
@@ -8,28 +9,44 @@ import VisitUs from "./visitUs/VisitUs.jsx";
 import OurMenu from "./ourMenu/OurMenu.jsx";
 import Testimonials from "./testimonials/Testimonials.jsx";
 import Footer from "../layout/footer/Footer.jsx";
-import { useRouter } from "next/navigation.js";
 
 export default function MainPage() {
-  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-[#1E1E1E] text-white overflow-hidden">
       {/* Decorative Background Elements */}
-      {/* <div className="fixed inset-0 pointer-events-none opacity-10">
-        <div 
-          className="absolute top-20 right-10 w-64 h-64 border-2 border-[#D97634] rounded-full"
-          style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+      <div className=" inset-0 pointer-events-none hidden sm:flex ">
+        <div
+          className="absolute top-20 right-45 w-20 h-20 border-2 border-dashed border-[#E9842C26] rounded-full"
         />
-        <div 
-          className="absolute top-40 left-20 w-48 h-48 border-2 border-dashed border-[#D97634] rounded-full"
-          style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+
+        <div
+          className="absolute top-20 flex justify-center items-center right-170 w-28 h-28 border-2 border-dashed  border-[#E9842C26] rounded-full"
+        >
+          <div
+            className="w-22 h-22 border-2  border-dashed border-[#E9842C26] bg-[#E9842C0D] rounded-full"
+          />
+        </div>
+
+        <div
+          className="absolute top-60 flex justify-center items-center right-180 w-12 h-12 border-2 border-dashed  border-[#E9842C26] rounded-full"
+        >
+          <div
+            className="w-10 h-10 border-2  border-dashed border-[#E9842C26] bg-[#E9842C0D] rounded-full"
+          />
+        </div>
+        <div
+          className="absolute top-140 flex justify-center items-center right-180 w-12 h-12 border-2 border-dashed  border-[#E9842C26] rounded-full"
         />
-        <div 
-          className="absolute bottom-40 left-40 w-56 h-56 border-2 border-[#D97634] rounded-full"
-          style={{ transform: `translateY(${scrollY * 0.15}px)` }}
-        />
-      </div> */}
+
+        <div
+          className="absolute top-170 flex justify-center items-center right-40 w-28 h-28 border-2 border-dashed  border-[#E9842C26] rounded-full"
+        >
+          <div
+            className="w-20 h-20 border-2  border-dashed border-[#E9842C26] bg-[#E9842C0D] rounded-full"
+          />
+        </div>
+      </div>
       <Navbar />
 
       <section className="relative px-6 py-12 md:px-8 pt-30 md:pt-33 flex flex-col-reverse lg:flex-row items-center justify-between max-w-7xl mx-auto gap-12 overflow-hidden">
@@ -64,16 +81,13 @@ export default function MainPage() {
 
           <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 md:gap-6">
             <motion.button
-              onClick={() => router.push("/menu")}
               className="px-8 py-4 bg-[#E9842C] text-black rounded font-semibold tracking-wide shadow-lg"
               whileHover={{ y: -3, backgroundColor: "#E88844" }}
               whileTap={{ scale: 0.95 }}
             >
               EXPLORE OUR MENU
             </motion.button>
-
             <motion.button
-              onClick={() => router.push("/aboutus")}
               className="px-8 py-4 border-2 border-[#D97634] rounded text-[#D97634] font-semibold tracking-wide"
               whileHover={{ y: -3, backgroundColor: "#E9842C", color: "#fff" }}
               whileTap={{ scale: 0.95 }}
