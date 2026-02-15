@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../layout/navbar/Navbar.jsx";
 import Image from "next/image.js";
@@ -12,14 +11,7 @@ import Footer from "../layout/footer/Footer.jsx";
 import { useRouter } from "next/navigation.js";
 
 export default function MainPage() {
-  const [scrollY, setScrollY] = useState(0);
   const router = useRouter();
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div className="min-h-screen bg-[#1E1E1E] text-white overflow-hidden">

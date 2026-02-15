@@ -4,8 +4,9 @@ import { useState } from "react";
 import { MapPin, Clock, Phone } from "lucide-react";
 import Navbar from "../../components/layout/navbar/Navbar.jsx";
 import Footer from "../../components/layout/footer/Footer.jsx";
-import Alert from '@mui/material/Alert';
 
+const CONTACT_API =
+  `${process.env.NEXT_PUBLIC_API_BASE || "http://localhost/himalayanthakali_backend"}/contacts/submit-contact.php`;
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -14,194 +15,190 @@ export default function ContactPage() {
     phoneNo: "",
     message: "",
   });
+  const [submitState, setSubmitState] = useState({ type: "idle", message: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    setSubmitState({ type: "idle", message: "" });
 
-  const res = await fetch(
-    "http://localhost/himalayanthakali_backend/contacts/submit-contact.php",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+    try {
+      const res = await fetch(CONTACT_API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Failed to submit form");
+
+      setSubmitState({ type: "success", message: "Message sent successfully." });
+      setFormData({
+        fullName: "",
+        email: "",
+        phoneNo: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Contact form submission failed:", error);
+      setSubmitState({
+        type: "error",
+        message: "Could not send your message. Please try again.",
+      });
     }
-  );
-
-  if (res.ok) {
-<Alert severity="success">Message sent successfully</Alert>;
-    setFormData({
-      fullName: "",
-      email: "",
-      phoneNo: "",
-      message: "",
-    });
-  }
-};
-
+  };
 
   return (
     <>
       <Navbar />
-      <div className="bg-[#1E1E1E] pt-30 px-4 sm:px-6 lg:px-8 ">
-        <div className="max-w-4xl mx-auto  pb-10 ">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-px w-50 bg-linear-to-r from-transparent to-orange-500"></div>
-              <div className="flex items-center gap-2 text-orange-500 text-sm font-medium">
-                <Phone className="w-4 h-4" />
+      <div className="bg-[#1E1E1E] px-4 pt-30 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl pb-10">
+          <header className="mb-12 text-center">
+            <div className="mb-4 flex items-center justify-center gap-3">
+              <div className="h-px w-50 bg-linear-to-r from-transparent to-orange-500" />
+              <div className="flex items-center gap-2 text-sm font-medium text-orange-500">
+                <Phone className="h-4 w-4" aria-hidden="true" />
                 <span>CONTACT US</span>
               </div>
-              <div className="h-px w-50 bg-linear-to-l from-transparent to-orange-500"></div>
+              <div className="h-px w-50 bg-linear-to-l from-transparent to-orange-500" />
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              Get in Touch
-            </h1>
+            <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">Get in Touch</h1>
 
-            <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam.
+            <p className="mx-auto max-w-2xl leading-relaxed text-gray-400">
+              Share your questions or feedback and our team will get back to you soon.
             </p>
-          </div>
+          </header>
 
-          {/* Main Content Grid */}
-          <div className="grid md:grid-cols-2 gap-20 items-start">
-            {/* Contact Form */} 
+          <div className="grid items-start gap-20 md:grid-cols-2">
             <div className="order-2 md:order-1">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Full Name */}
+              <form onSubmit={handleSubmit} className="space-y-6" aria-label="Contact form">
                 <div className="relative">
-                  <fieldset className="group rounded-lg border border-zinc-600 focus-within:border-dashed focus-within:border-orange-500 px-2.5 py-1 transition-all">
-                    <legend className="px-2 text-xs uppercase tracking-wider text-orange-500">
+                  <fieldset className="group rounded-lg border border-zinc-600 px-2.5 py-1 transition-all focus-within:border-dashed focus-within:border-orange-500">
+                    <legend className="px-2 text-xs tracking-wider text-orange-500 uppercase">
                       Full Name
                     </legend>
-
                     <input
                       type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleChange}
-                      className="w-full bg-[#444444] rounded-md px-4 py-2 mb-1.5 text-white placeholder-gray-500 focus:outline-none"
+                      autoComplete="name"
+                      className="mb-1.5 w-full rounded-md bg-[#444444] px-4 py-2 text-white placeholder-gray-500 focus:outline-none"
                       required
                     />
                   </fieldset>
                 </div>
 
-                {/* Email Address */}
                 <div className="relative">
-                  <fieldset className="group rounded-lg border border-zinc-600 focus-within:border-dashed focus-within:border-orange-500 px-2.5 py-1 transition-all">
-                    <legend className="px-2 text-xs uppercase tracking-wider text-gray-400 ">
+                  <fieldset className="group rounded-lg border border-zinc-600 px-2.5 py-1 transition-all focus-within:border-dashed focus-within:border-orange-500">
+                    <legend className="px-2 text-xs tracking-wider text-gray-400 uppercase">
                       Email Address
                     </legend>
-
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-[#444444] rounded-md mb-1.5 px-4 py-2 text-white placeholder-gray-500 focus:outline-none"
+                      autoComplete="email"
+                      className="mb-1.5 w-full rounded-md bg-[#444444] px-4 py-2 text-white placeholder-gray-500 focus:outline-none"
                       required
                     />
                   </fieldset>
                 </div>
 
-                {/* Phone No */}
                 <div className="relative">
-                  <fieldset className="group rounded-lg border border-zinc-600 focus-within:border-dashed focus-within:border-orange-500 px-2.5 py-1 transition-all">
-                    <legend className="px-2 text-xs uppercase tracking-wider text-gray-400">
-                      Phone No
+                  <fieldset className="group rounded-lg border border-zinc-600 px-2.5 py-1 transition-all focus-within:border-dashed focus-within:border-orange-500">
+                    <legend className="px-2 text-xs tracking-wider text-gray-400 uppercase">
+                      Phone Number
                     </legend>
-
                     <input
                       type="tel"
                       id="phoneNo"
                       name="phoneNo"
                       value={formData.phoneNo}
                       onChange={handleChange}
-                      className="w-full bg-[#444444]  mb-1.5 rounded-md px-4 py-2 text-white placeholder-gray-500 focus:outline-none"
+                      autoComplete="tel"
+                      className="mb-1.5 w-full rounded-md bg-[#444444] px-4 py-2 text-white placeholder-gray-500 focus:outline-none"
                       required
                     />
                   </fieldset>
                 </div>
 
-                {/* Message */}
                 <div className="relative">
-                  <fieldset className="group rounded-lg border border-zinc-600 focus-within:border-dashed focus-within:border-orange-500 px-2.5 py-1 transition-all">
-                    <legend className="px-2 text-xs uppercase tracking-wider text-gray-400">
+                  <fieldset className="group rounded-lg border border-zinc-600 px-2.5 py-1 transition-all focus-within:border-dashed focus-within:border-orange-500">
+                    <legend className="px-2 text-xs tracking-wider text-gray-400 uppercase">
                       Message
                     </legend>
-
                     <textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
                       rows="5"
-                      className="w-full bg-[#444444] rounded-md px-4 py-3 text-white placeholder-gray-500 focus:outline-none resize-none"
+                      className="w-full resize-none rounded-md bg-[#444444] px-4 py-3 text-white placeholder-gray-500 focus:outline-none"
                       required
                     />
                   </fieldset>
                 </div>
 
-                {/* Submit Button */}
                 <div className="flex justify-center">
-
-                <button
-                  type="submit"
-                  className="bg-orange-500 hover:bg-orange-600 text-black font-semibold py-3 px-8 rounded-md transition-colors duration-200 uppercase tracking-wider text-sm"
+                  <button
+                    type="submit"
+                    className="rounded-md bg-orange-500 px-8 py-3 text-sm font-semibold tracking-wider text-black uppercase transition-colors duration-200 hover:bg-orange-600"
                   >
-                  Send Message
-                </button>
-                    </div>
+                    Send Message
+                  </button>
+                </div>
+
+                <p
+                  role="status"
+                  aria-live="polite"
+                  className={`text-center text-sm ${
+                    submitState.type === "success" ? "text-green-400" : "text-red-400"
+                  }`}
+                >
+                  {submitState.message}
+                </p>
               </form>
             </div>
 
-            {/* Contact Info Cards */}
-            <div className="space-y-4 order-1 md:order-2">
-              {/* Visit Us */}
-              <div className="bg-zinc-800 rounded-lg  p-3 text-center">
-                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-8 h-8 text-white" />
+            <div className="order-1 space-y-4 md:order-2">
+              <div className="rounded-lg bg-zinc-800 p-3 text-center">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-orange-500">
+                  <MapPin className="h-8 w-8 text-white" aria-hidden="true" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">Visit Us</h3>
+                <h2 className="mb-2 font-semibold text-white">Visit Us</h2>
                 <p className="text-orange-500">Mid Baneshwor, Kathmandu</p>
               </div>
 
-              {/* Opening Hours */}
-              <div className="bg-zinc-800 rounded-lg p-3 text-center">
-                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="w-8 h-8 text-white" />
+              <div className="rounded-lg bg-zinc-800 p-3 text-center">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-orange-500">
+                  <Clock className="h-8 w-8 text-white" aria-hidden="true" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">Opening Hours</h3>
+                <h2 className="mb-2 font-semibold text-white">Opening Hours</h2>
                 <p className="text-orange-500">10:00 AM - 10:00 PM</p>
               </div>
 
-              {/* Contact Us */}
-              <div className="bg-zinc-800 rounded-lg p-3 text-center">
-                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Phone className="w-8 h-8 text-white" />
+              <div className="rounded-lg bg-zinc-800 p-3 text-center">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-orange-500">
+                  <Phone className="h-8 w-8 text-white" aria-hidden="true" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">Contact Us</h3>
-                <div className="text-orange-500 space-y-1">
-                  <p>+977 0000000000</p>
+                <h2 className="mb-2 font-semibold text-white">Contact Us</h2>
+                <div className="space-y-1 text-orange-500">
+                  <a href="tel:+9770000000000" className="hover:underline">
+                    +977 0000000000
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      <Footer  />
+        <Footer />
       </div>
-
     </>
   );
 }
