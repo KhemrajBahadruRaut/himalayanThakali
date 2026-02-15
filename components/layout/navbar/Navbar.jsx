@@ -9,12 +9,12 @@ const LEFT_MENU = [
   { label: "HOME", path: "/" },
   { label: "ABOUT US", path: "/aboutus" },
   { label: "MENU", path: "/menu" },
-  { label: "GALLERY", path: "/gallery" },
 ];
 
 const RIGHT_MENU = [
-  { label: "CAREER", path: "/career" },
-  { label: "SERVICES", path: "/services" },
+  { label: "GALLERY", path: "/gallery" },
+  // { label: "CAREER", path: "/career" },
+  // { label: "SERVICES", path: "/services" },
   { label: "BLOGS", path: "/blogs" },
   { label: "CONTACT US", path: "/contact-us" },
 ];
